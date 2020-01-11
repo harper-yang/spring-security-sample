@@ -16,11 +16,19 @@
 package harper.github.io.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AnonymousAuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import java.util.LinkedList;
+import java.util.List;
 
 @EnableWebSecurity
 public class SecurityConfig {
@@ -29,7 +37,32 @@ public class SecurityConfig {
 	@Bean
 	public UserDetailsService userDetailsService() {
 		UserDetails user = User.withDefaultPasswordEncoder().username("user").password("password").roles("USER").build();
-		return new InMemoryUserDetailsManager(user);
+
+		UserDetails user2 = User.withDefaultPasswordEncoder().username("harper").password("password").roles("USER").build();
+		return new InMemoryUserDetailsManager(user,user2);
 	}
 	// @formatter:on
+
+
+	@Bean
+	public AuthenticationManager authenticationManager() {
+		List<AuthenticationProvider> list = new LinkedList<>();
+		list.add(daoAuthenticationProvider());
+//		list.add(anonymousAuthenticationProvider());
+
+		ProviderManager providerManager = new ProviderManager(list);
+
+		return providerManager;
+	}
+
+	@Bean
+	public DaoAuthenticationProvider daoAuthenticationProvider() {
+		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+		daoAuthenticationProvider.setUserDetailsService(userDetailsService());
+		return daoAuthenticationProvider;
+	}
+
+	public AnonymousAuthenticationProvider anonymousAuthenticationProvider() {
+		return new AnonymousAuthenticationProvider("10");
+	}
 }
