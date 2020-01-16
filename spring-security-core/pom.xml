@@ -5,10 +5,9 @@
     <parent>
         <groupId>spring.security.sample</groupId>
         <artifactId>spring-security-parent</artifactId>
-        <version>${parent.version}</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>spring.security.core</groupId>
+
     <artifactId>spring-security-core</artifactId>
     <version>${parent.version}</version>
     <packaging>jar</packaging>
