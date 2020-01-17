@@ -6,11 +6,14 @@
         <groupId>spring.security.sample</groupId>
         <artifactId>spring-security-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
 
     <artifactId>spring-security-entity</artifactId>
     <version>${parent.version}</version>
+    <packaging>jar</packaging>
+
     <name>spring-security-entity</name>
     <description>spring boot security sample entity</description>
 
@@ -18,4 +21,11 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 </project>

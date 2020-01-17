@@ -15,6 +15,7 @@
  */
 package harper.github.io.config;
 
+import jdk.nashorn.internal.runtime.OptimisticReturnFilters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AnonymousAuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,6 +28,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -63,18 +66,45 @@ public class SecurityConfig {
 	public DaoAuthenticationProvider daoAuthenticationProvider() {
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
 		daoAuthenticationProvider.setUserDetailsService(userDetailsService());
-		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 
 		return daoAuthenticationProvider;
 	}
 
+//	@Bean
+//	public AnonymousAuthenticationProvider anonymousAuthenticationProvider() {
+//		return new AnonymousAuthenticationProvider("10");
+//	}
+//
+	// 指定编码
+//	@Bean
+//	public BCryptPasswordEncoder passwordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
+
+	//
+//	@Bean
+//	public RememberMeServices rememberMeServices() {
+//		//
+//		RememberMeServices rememberMeServices = new TokenBasedRememberMeServices("user", userDetailsService());
+//		return rememberMeServices;
+//	}
+
 	@Bean
-	public AnonymousAuthenticationProvider anonymousAuthenticationProvider() {
-		return new AnonymousAuthenticationProvider("10");
+	public RememberMeServices rememberMeServices() {
+		RememberMeServices rememberMeServices = new PersistentTokenBasedRememberMeServices("user",userDetailsService(),persistentTokenRepository());
+		return rememberMeServices;
 	}
 
 	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+	public PersistentTokenRepository persistentTokenRepository() {
+		return new JdbcTokenRepositoryImpl();
+
+	}
+
+	@Bean
+	public RememberMeAuthenticationFilter rememberMeFilter() {
+		RememberMeAuthenticationFilter filter = new RememberMeAuthenticationFilter(authenticationManager(), rememberMeServices());
+		return filter;
 	}
 }

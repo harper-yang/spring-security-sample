@@ -6,6 +6,7 @@
         <groupId>spring.security.sample</groupId>
         <artifactId>spring-security-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>spring-security-core</artifactId>
@@ -52,15 +53,11 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>spring.security.sample</groupId>
+            <artifactId>spring-security-entity</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

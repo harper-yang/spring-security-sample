@@ -7,11 +7,12 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.2.RELEASE</version>
+        <relativePath />
     </parent>
 
     <groupId>spring.security.sample</groupId>
     <artifactId>spring-security-parent</artifactId>
-    <version>${project.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>spring-security-parent</name>
@@ -19,7 +20,6 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <project.version>0.0.1-SNAPSHOT</project.version>
     </properties>
 
 
