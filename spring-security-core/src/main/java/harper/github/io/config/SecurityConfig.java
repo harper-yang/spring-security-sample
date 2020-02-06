@@ -15,9 +15,8 @@
  */
 package harper.github.io.config;
 
-import jdk.nashorn.internal.runtime.OptimisticReturnFilters;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.AnonymousAuthenticationProvider;
+import org.springframework.security.access.intercept.RunAsImplAuthenticationProvider;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
@@ -26,10 +25,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.authentication.RememberMeServices;
-import org.springframework.security.web.authentication.rememberme.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -58,7 +54,6 @@ public class SecurityConfig {
 
 		ProviderManager providerManager = new ProviderManager(list);
 
-
 		return providerManager;
 	}
 
@@ -69,6 +64,12 @@ public class SecurityConfig {
 //		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 
 		return daoAuthenticationProvider;
+	}
+
+	@Bean
+	public RunAsImplAuthenticationProvider runAsImplAuthenticationProvider() {
+		RunAsImplAuthenticationProvider runAsImplAuthenticationProvider = new RunAsImplAuthenticationProvider();
+		return runAsImplAuthenticationProvider;
 	}
 
 //	@Bean
@@ -90,21 +91,23 @@ public class SecurityConfig {
 //		return rememberMeServices;
 //	}
 
-	@Bean
-	public RememberMeServices rememberMeServices() {
-		RememberMeServices rememberMeServices = new PersistentTokenBasedRememberMeServices("user",userDetailsService(),persistentTokenRepository());
-		return rememberMeServices;
-	}
+//	@Bean
+//	public RememberMeServices rememberMeServices() {
+//		return new PersistentTokenBasedRememberMeServices("user",userDetailsService(),persistentTokenRepository());
+//	}
+//
+//	@Bean
+//	public PersistentTokenRepository persistentTokenRepository() {
+//		JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
+//		jdbcTokenRepository.setDataSource(dataSource);
+//		return jdbcTokenRepository;
+//
+//	}
+//
+//	@Bean
+//	public RememberMeAuthenticationFilter rememberMeFilter() {
+//		return new RememberMeAuthenticationFilter(authenticationManager(), rememberMeServices());
+//	}
 
-	@Bean
-	public PersistentTokenRepository persistentTokenRepository() {
-		return new JdbcTokenRepositoryImpl();
 
-	}
-
-	@Bean
-	public RememberMeAuthenticationFilter rememberMeFilter() {
-		RememberMeAuthenticationFilter filter = new RememberMeAuthenticationFilter(authenticationManager(), rememberMeServices());
-		return filter;
-	}
 }
