@@ -40,6 +40,14 @@
             <artifactId>spring-security-entity</artifactId>
             <version>${parent.version}</version>
         </dependency>
+
+        <!-- 实现Config的客户端配置 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+            <version>${spring-boot-version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
