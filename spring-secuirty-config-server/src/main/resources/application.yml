@@ -5,4 +5,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/harper-yang/spring-security-sample/tree/master/spring-config-repo
+          uri: https://github.com/harper-yang/spring-security-sample.git
+          search-paths: spring-config-repo/spring-config-repo
+      label: master
