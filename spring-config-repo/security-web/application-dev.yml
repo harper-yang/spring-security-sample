@@ -4,8 +4,8 @@ spring:
   application:
     name: security-web
   datasource:
-    hikari:
-      data-source-class-name: com.mysql.jdbc.Driver
-      jdbc-url: jdbc:mysql://152.136.119.254:3306/security_config?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-      username: root
-      password: mysql
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://152.136.119.254:3306/security-sample?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver

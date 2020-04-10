@@ -4,6 +4,7 @@
 #  application:
 #    name: security-web
 #  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
 #    url: jdbc:mysql://152.136.119.254:3306/security_config?useUnicode=true&characterEncoding=UTF-8&useSSL=false
 #    username: root
 #    password: mysql

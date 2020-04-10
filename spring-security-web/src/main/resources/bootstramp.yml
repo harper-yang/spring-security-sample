@@ -3,4 +3,4 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/harper-yang/spring-security-sample/spring-config-repo/spring-config-repo
+          uri: https://github.com/harper-yang/spring-security-sample/spring-config-repo/security-web
