@@ -1,7 +1,7 @@
 spring:
   cloud:
     config:
-      name: application
+      name: security-web
       profile: test
       label: master
       uri: http://localhost:8888
