@@ -66,11 +66,11 @@ public class SecurityConfig {
 		return daoAuthenticationProvider;
 	}
 
-	@Bean
-	public RunAsImplAuthenticationProvider runAsImplAuthenticationProvider() {
-		RunAsImplAuthenticationProvider runAsImplAuthenticationProvider = new RunAsImplAuthenticationProvider();
-		return runAsImplAuthenticationProvider;
-	}
+//	@Bean
+//	public RunAsImplAuthenticationProvider runAsImplAuthenticationProvider() {
+//		RunAsImplAuthenticationProvider runAsImplAuthenticationProvider = new RunAsImplAuthenticationProvider();
+//		return runAsImplAuthenticationProvider;
+//	}
 
 //	@Bean
 //	public AnonymousAuthenticationProvider anonymousAuthenticationProvider() {
