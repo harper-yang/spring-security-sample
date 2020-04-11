@@ -9,5 +9,4 @@ eureka:
   client:
     registerWithEureka: true
     fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8761/eureka/,http://${eureka.instance.hostname}:8762/eureka/,http://${eureka.instance.hostname}:8763/eureka/
+    service-url: http://${eureka.instance.hostname}:8761/eureka/, http://${eureka.instance.hostname}:8762/eureka/, http://${eureka.instance.hostname}:8763/eureka/
