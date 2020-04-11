@@ -10,3 +10,11 @@ spring:
       label: master
   application:
     name: config-server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/, http://${eureka.instance.hostname}:8762/eureka/, http://${eureka.instance.hostname}:8763/eureka/

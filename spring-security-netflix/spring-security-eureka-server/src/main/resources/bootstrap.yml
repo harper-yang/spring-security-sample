@@ -2,6 +2,6 @@ spring:
   cloud:
     config:
       name: eureka-server
-      profile: node1
+      profile: node3
       label: master
       uri: http://localhost:8888
