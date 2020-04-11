@@ -27,5 +27,11 @@
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
             <version>${spring-boot-version}</version>
         </dependency>
+        <!-- 实现Config的客户端配置 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+            <version>${spring-boot-version}</version>
+        </dependency>
     </dependencies>
 </project>
