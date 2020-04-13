@@ -25,3 +25,4 @@ zuul:
   routes:
     user:
       path: /user/**
+      url: forward:/user

@@ -42,7 +42,12 @@
             <version>${parent.version}</version>
         </dependency>
 
-
+        <!-- Ribbon  -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            <version>${spring-boot-version}</version>
+        </dependency>
     </dependencies>
 
 
@@ -52,13 +57,6 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-            </dependency>
-
-            <!-- Ribbon  -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-                <version>${spring-boot-version}</version>
             </dependency>
 
             <dependency>

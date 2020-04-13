@@ -5,12 +5,23 @@ spring:
     name: security-web
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://152.136.119.254:3306/security_config?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://152.136.119.254:3306/security-sample?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: mysql
     driver-class-name: com.mysql.jdbc.Driver
 eureka:
+  instance:
+    hostname: localhost
   client:
     register-with-eureka: true
     fetch-registry: true
-    service-url: http://localhost:8761/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/, http://${eureka.instance.hostname}:8762/eureka/, http://${eureka.instance.hostname}:8763/eureka/
+ribbon:
+  eureka:
+    enabled: true
+zuul:
+  ignored-patterns: /role/**
+  routes:
+    user:
+      path: /user/**
