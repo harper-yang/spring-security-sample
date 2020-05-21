@@ -20,9 +20,9 @@ eureka:
 ribbon:
   eureka:
     enabled: true
-zuul:
-  ignored-patterns: /role/**
-  routes:
-    user:
-      path: /user/**
-      url: forward:/user
+#zuul:
+#  ignored-patterns: /role/**
+#  routes:
+#    user:
+#      path: /user/**
+#      url: forward:/user
