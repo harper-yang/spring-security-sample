@@ -9,7 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-secuirty-config-server</artifactId>
+    <artifactId>spring-security-config-server</artifactId>
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 

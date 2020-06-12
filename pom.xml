@@ -48,6 +48,8 @@
         <module>spring-security-web</module>
         <module>spring-security-entity</module>
         <module>spring-security-mq</module>
+        <module>spring-security-config-server</module>
+        <module>spring-security-netflix</module>
     </modules>
 
 </project>
